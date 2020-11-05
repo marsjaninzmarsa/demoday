@@ -5,16 +5,14 @@ jQuery(function($) {
 
 	var basePrice = $priceLabel.data('price');
 
-	var recalc = function() {
+	recalc = function() {
 		factor = $sizes.find(':selected').data('factor');
 		quantity = $quantity.val();
 
-		console.log(factor, quantity, $priceLabel, $sizes);
 		if(quantity) {
 			$priceLabel.text('$' + basePrice * factor * quantity);
 		}
 	}
-
 
 	$sizes.change(recalc);
 	$quantity.change(recalc);
