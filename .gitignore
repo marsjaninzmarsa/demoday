@@ -5,6 +5,7 @@ demoday.iml
 misc.xml
 modules.xml
 vcs.xml
+.htaccess
 
 #wp
 wp-config.php
