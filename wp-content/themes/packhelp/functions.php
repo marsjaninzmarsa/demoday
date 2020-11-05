@@ -32,3 +32,7 @@ add_action( 'wp_enqueue_scripts', function() {
 	wp_register_script( 'motion-ui', 'https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js', ['jquery'], '', true );
 	wp_enqueue_script('motion-ui');
 });
+
+add_theme_support( 'title-tag' );
+add_theme_support( 'custom-logo', ['width' => 130, 'height' => 38] );
+add_theme_support( 'title-tag' );
