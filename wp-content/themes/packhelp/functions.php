@@ -26,7 +26,7 @@ add_action( 'wp_enqueue_scripts', function() {
 	wp_enqueue_style('foundation-icons');
 
 	wp_register_script( 'foundation', 'https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js', ['jquery'], '', true );
-	wp_add_inline_script( 'foundation', '$(document).foundation();');
+	wp_add_inline_script( 'foundation', 'jQuery(document).foundation();');
 	wp_enqueue_script('foundation');
 
 	wp_register_script( 'motion-ui', 'https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js', ['jquery'], '', true );
