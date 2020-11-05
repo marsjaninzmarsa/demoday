@@ -32,36 +32,11 @@ add_action( 'wp_enqueue_scripts', function() {
 	wp_register_script( 'motion-ui', 'https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js', ['jquery'], '', true );
 	wp_enqueue_script('motion-ui');
 
-
-	// should find better place for that - probably in the theme (plugin? sic.) config, editable from the panel, or in the external YAML/JSON
-	$sizes = [
-		'tiny' => [
-			'label' => 'Tiny',
-			'factor' => .75,
-		],
-		'small' => [
-			'label' => 'Small',
-			'factor' => 1,
-		],
-		'medium' => [
-			'label' => 'Medium',
-			'factor' => 1.5,
-		],
-		'large' => [
-			'label' => 'Large',
-			'factor' => 2,
-		],
-		'x-large' => [
-			'label' => 'Extra Large',
-			'factor' => 3,
-		],
-		'enormous' => [
-			'label' => 'Enormous',
-			'factor' => 4,
-		],
-	];
 	wp_register_script( 'calculator', get_template_directory_uri() .'/calculator.js', ['jquery'] );
-	wp_localize_script( 'calculator', 'calculator', $sizes );
+	if(get_post_type() == 'product') {
+		wp_enqueue_script('calculator');
+	}
+
 });
 
 add_theme_support( 'title-tag' );
@@ -95,4 +70,8 @@ add_action( 'init', function() {
 	];
 
 	register_post_type( 'product', $args );
+
+	register_taxonomy( 'sizes', 'product', [
+		'label' => 'Sizes',
+	] );
 } );

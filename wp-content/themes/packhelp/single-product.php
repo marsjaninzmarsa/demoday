@@ -12,12 +12,13 @@
             <div class="content"><?php the_content(); ?></div>
 
             <label>Size
-                <select>
-                    <option value="husker">Small</option>
-                    <option value="starbuck">Medium</option>
-                    <option value="hotdog">Large</option>
-                    <option value="apollo">Yeti</option>
-                </select>
+                <?php $sizes = get_field('sizes'); if($sizes) : ?>
+                    <select id="product-size">
+                        <?php foreach ($sizes as $size):
+                            printf('<option value="%s" data-factor="%s">%s</option>', $size->slug, get_field('factor', $size), $size->name);
+                        endforeach; ?>
+                    </select>
+                <?php endif; ?>
             </label>
 
             <div class="grid-x">
@@ -25,11 +26,11 @@
                     <label for="middle-label" class="middle">Quantity</label>
                 </div>
                 <div class="small-9 cell">
-                    <input type="text" id="middle-label" placeholder="One fish two fish">
+                    <input type="number" step="1" id="quantity" placeholder="One fish two fish">
                 </div>
             </div>
 
-            <h4>Product price: <strong>$<?= get_field('price');?></strong></h4>
+            <h4>Product price: <strong id="price-label" data-price="<?= $price = get_field('price');?>">$<?= $price;?></strong></h4>
 
             <a href="#" class="button large expanded">Buy Now</a>
 
