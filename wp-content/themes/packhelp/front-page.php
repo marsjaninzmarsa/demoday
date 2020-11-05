@@ -38,69 +38,7 @@
     </div>
 
     <div class="grid-x grid-margin-x small-up-1 medium-up-3">
-        <div class="cell">
-            <img class="thumbnail" src="https://placehold.it/450x250">
-            <h5>Other Product <small>$22</small></h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac
-                euismod semper, magna diam.</p>
-            <a href="#" class="button hollow expanded">Buy Now</a>
-        </div>
-        <div class="cell">
-            <img class="thumbnail" src="https://placehold.it/450x250">
-            <h5>Other Product <small>$22</small></h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac
-                euismod semper, magna diam.</p>
-            <a href="#" class="button hollow expanded">Buy Now</a>
-        </div>
-        <div class="cell">
-            <img class="thumbnail" src="https://placehold.it/450x250">
-            <h5>Other Product <small>$22</small></h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac
-                euismod semper, magna diam.</p>
-            <a href="#" class="button hollow expanded">Buy Now</a>
-        </div>
-        <div class="cell">
-            <img class="thumbnail" src="https://placehold.it/450x250">
-            <h5>Other Product <small>$22</small></h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac
-                euismod semper, magna diam.</p>
-            <a href="#" class="button hollow expanded">Buy Now</a>
-        </div>
-        <div class="cell">
-            <img class="thumbnail" src="https://placehold.it/450x250">
-            <h5>Other Product <small>$22</small></h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac
-                euismod semper, magna diam.</p>
-            <a href="#" class="button hollow expanded">Buy Now</a>
-        </div>
-        <div class="cell">
-            <img class="thumbnail" src="https://placehold.it/450x250">
-            <h5>Other Product <small>$22</small></h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac
-                euismod semper, magna diam.</p>
-            <a href="#" class="button hollow expanded">Buy Now</a>
-        </div>
-        <div class="cell">
-            <img class="thumbnail" src="https://placehold.it/450x250">
-            <h5>Other Product <small>$22</small></h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac
-                euismod semper, magna diam.</p>
-            <a href="#" class="button hollow expanded">Buy Now</a>
-        </div>
-        <div class="cell">
-            <img class="thumbnail" src="https://placehold.it/450x250">
-            <h5>Other Product <small>$22</small></h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac
-                euismod semper, magna diam.</p>
-            <a href="#" class="button hollow expanded">Buy Now</a>
-        </div>
-        <div class="cell">
-            <img class="thumbnail" src="https://placehold.it/450x250">
-            <h5>Other Product <small>$22</small></h5>
-            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac
-                euismod semper, magna diam.</p>
-            <a href="#" class="button hollow expanded">Buy Now</a>
-        </div>
+        <?php get_template_part( 'grid', '', ['limit' => 9, 'type' => 'product', 'button' => ['style' => 'hollow', 'type' => 'buynow'] ] ); ?>
     </div>
 
     <hr>
