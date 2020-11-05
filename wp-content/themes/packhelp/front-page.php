@@ -1,67 +1,35 @@
 <?php get_header(); ?>
+<?php the_post(); ?>
 
 <div class="callout large">
     <div class="row column text-center">
-        <h1>Changing the World Through Design</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
-        <a href="#" class="button large">Go to shop</a>
-        <a href="#" class="button large hollow">Go to blog</a>
+        <h1><?= get_field('header_title'); ?></h1>
+        <p class="lead"><?= get_field('header_subtitle'); ?></p>
+        <?php while( have_rows('header_buttons') ) : the_row(); $link = get_sub_field('link');
+            printf('<a href="%s" target="%s" class="button large %s">%s</a>' . "\n", esc_url($link['url'] ?: '#'), $link['target'], get_sub_field('style'), $link['title']);
+        endwhile; ?>
     </div>
 </div>
 
-<article class="grid-container">
-    <div class="grid-x grid-margin-x">
-        <div class="medium-6 cell small-order-2 medium-order-1">
-            <h2>Our Agency, our selves.</h2>
-            <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec
-                diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis
-                sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum
-                elementum. Donec viverra auctor.</p>
-        </div>
-        <div class="medium-6 cell small-order-1 medium-order-2">
-            <img class="thumbnail" src="https://placehold.it/750x350">
-        </div>
-    </div>
 
-    <div class="grid-x grid-margin-x">
-        <div class="medium-4 cell">
-            <h3>Photoshop</h3>
-            <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec
-                diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna.</p>
-        </div>
-        <div class="medium-4 cell">
-            <h3>Javascript</h3>
-            <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec
-                diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna.</p>
-        </div>
-        <div class="medium-4 cell">
-            <h3>Marketing</h3>
-            <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec
-                diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna.</p>
-        </div>
-    </div>
+<article class="grid-container">
+
+    <?php the_content(); ?>
 
     <hr>
 
-    <div class="row column">
-        <ul class="vertical medium-horizontal menu expanded text-center">
-            <li><a href="#">
-                <div class="stat">28</div>
-                <span>Websites</span></a></li>
-            <li><a href="#">
-                <div class="stat">43</div>
-                <span>Apps</span></a></li>
-            <li><a href="#">
-                <div class="stat">95</div>
-                <span>Ads</span></a></li>
-            <li><a href="#">
-                <div class="stat">59</div>
-                <span>Cakes</span></a></li>
-            <li><a href="#">
-                <div class="stat">18</div>
-                <span>Logos</span></a></li>
-        </ul>
-    </div>
+    <?php if(have_rows('numbers') ) : ?>
+        <div class="row column">
+            <ul class="vertical medium-horizontal menu expanded text-center">
+                <?php while( have_rows('numbers') ) : the_row(); ?>
+                    <li><a href="<?= esc_url(get_sub_field('link') ?: '#'); ?>">
+                        <div class="stat"><?= get_sub_field('quantity'); ?></div>
+                        <span><?= get_sub_field('description'); ?></span>
+                    </a></li>
+                <?php endwhile; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
 
     <hr>
 
