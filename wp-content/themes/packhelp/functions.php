@@ -31,8 +31,68 @@ add_action( 'wp_enqueue_scripts', function() {
 
 	wp_register_script( 'motion-ui', 'https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js', ['jquery'], '', true );
 	wp_enqueue_script('motion-ui');
+
+
+	// should find better place for that - probably in the theme (plugin? sic.) config, editable from the panel, or in the external YAML/JSON
+	$sizes = [
+		'tiny' => [
+			'label' => 'Tiny',
+			'factor' => .75,
+		],
+		'small' => [
+			'label' => 'Small',
+			'factor' => 1,
+		],
+		'medium' => [
+			'label' => 'Medium',
+			'factor' => 1.5,
+		],
+		'large' => [
+			'label' => 'Large',
+			'factor' => 2,
+		],
+		'x-large' => [
+			'label' => 'Extra Large',
+			'factor' => 3,
+		],
+		'enormous' => [
+			'label' => 'Enormous',
+			'factor' => 4,
+		],
+	];
+	wp_register_script( 'calculator', get_template_directory_uri() .'/calculator.js', ['jquery'] );
+	wp_localize_script( 'calculator', 'calculator', $sizes );
 });
 
 add_theme_support( 'title-tag' );
 add_theme_support( 'custom-logo', ['width' => 130, 'height' => 38] );
 add_theme_support( 'title-tag' );
+add_theme_support( 'post-thumbnails', ['post', 'product'] );
+
+add_image_size( 'product-large', 650, 350, true );
+add_image_size( 'product-featured', 500, 400, true );
+add_image_size( 'product-small', 450, 250, true );
+
+add_action( 'init', function() {
+	$args = [
+		'label'                 => 'Product',
+		'supports'              => ['title', 'editor', 'thumbnail'],
+		'taxonomies'            => ['category'],
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 20,
+		'menu_icon'             => 'dashicons-cart',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+		'show_in_rest'          => true,
+	];
+
+	register_post_type( 'product', $args );
+} );
